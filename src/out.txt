@@ -1,0 +1,7 @@
+C:\Users\tenno\OneDrive\Máy tính\Project\logohunter\data\test\Testv2\Image\365937_paris-saint-germain-melawan-chelsea_665_374.jpg 478,170,505,194,Paris_Saint-Germain,0.34,0.998 245,165,269,197,Real_Madrid_CF,0.76,0.985
+C:\Users\tenno\OneDrive\Máy tính\Project\logohunter\data\test\Testv2\Image\Lich_Thi_Dau_Bong_Da.jpg 529,386,680,526,Real_Madrid_CF,0.36,1.000 802,435,825,466,Real_Madrid_CF,0.53,0.994
+C:\Users\tenno\OneDrive\Máy tính\Project\logohunter\data\test\Testv2\Image\madrid_vs_chelsea.jpg 1761,598,1844,686,Chelsea_FC,0.93,1.000 952,379,1029,457,Chelsea_FC,0.95,0.980
+C:\Users\tenno\OneDrive\Máy tính\Project\logohunter\data\test\Testv2\Image\manchester-city-real-madrid-psg-chelsea.jpg 521,398,723,475,Paris_Saint-Germain,0.28,0.980 143,188,353,316,Liverpool,0.16,0.992
+C:\Users\tenno\OneDrive\Máy tính\Project\logohunter\data\test\Testv2\Image\maxresdefault (1).jpg 673,291,712,342,Chelsea_FC,0.76,0.951 995,243,1036,289,Paris_Saint-Germain,0.93,0.998
+C:\Users\tenno\OneDrive\Máy tính\Project\logohunter\data\test\Testv2\Image\maxresdefault.jpg 123,513,282,672,Real_Madrid_CF,0.30,1.000 1142,4,1211,35,Paris_Saint-Germain,0.19,0.963
+C:\Users\tenno\OneDrive\Máy tính\Project\logohunter\data\test\Testv2\Image\PSG_Nike.jpg 725,866,841,972,Paris_Saint-Germain,0.81,1.000

@@ -26,7 +26,7 @@ class YOLO(object):
         "score" : 0.3,
         "iou" : 0.45,
         "model_image_size" : (416, 416),
-        "gpu_num" : 1,
+        "gpu_num" : 2, # 1
     }
 
     @classmethod
@@ -43,6 +43,7 @@ class YOLO(object):
         self.anchors = self._get_anchors()
         self.sess = K.get_session()
         self.boxes, self.scores, self.classes = self.generate()
+        
 
     def _get_class(self):
         classes_path = os.path.expanduser(self.classes_path)
@@ -67,11 +68,16 @@ class YOLO(object):
         num_anchors = len(self.anchors)
         num_classes = len(self.class_names)
         is_tiny_version = num_anchors==6 # default setting
+
         try:
+            #self.yolo_model = tiny_yolo_body(Input(shape=(None,None,3)), num_anchors//2, num_classes) \
+            #if is_tiny_version else yolo_body(Input(shape=(None,None,3)), num_anchors//3, num_classes)
+            #self.yolo_model.load_weights(self.model_path) # make sure model, anchors and classes match
             self.yolo_model = load_model(model_path, compile=False)
+            #self.yolo_model.load_weights(self.model_path)
         except:
             self.yolo_model = tiny_yolo_body(Input(shape=(None,None,3)), num_anchors//2, num_classes) \
-                if is_tiny_version else yolo_body(Input(shape=(None,None,3)), num_anchors//3, num_classes)
+            if is_tiny_version else yolo_body(Input(shape=(None,None,3)), num_anchors//3, num_classes)
             self.yolo_model.load_weights(self.model_path) # make sure model, anchors and classes match
         else:
             assert self.yolo_model.layers[-1].output_shape[-1] == \
@@ -98,6 +104,7 @@ class YOLO(object):
         # Generate output tensor targets for filtered bounding boxes.
         self.input_image_shape = K.placeholder(shape=(2, ))
         if self.gpu_num>=2:
+        #if True:
             self.yolo_model = multi_gpu_model(self.yolo_model, gpus=self.gpu_num)
         boxes, scores, classes = yolo_eval(self.yolo_model.output, self.anchors,
                 len(self.class_names), self.input_image_shape,
@@ -132,9 +139,11 @@ class YOLO(object):
         print('Found {} boxes for {}'.format(len(out_boxes), 'img'))
         out_prediction = []
 
-        font_path = os.path.join(os.path.dirname(__file__),'font/FiraMono-Medium.otf')
-        font = ImageFont.truetype(font=font_path,
-                    size=np.floor(3e-2 * image.size[1] + 0.5).astype('int32'))
+
+        font_path = os.path.join(os.path.dirname(__file__),r'font\arial.ttf')
+        print(font_path)
+        font = ImageFont.truetype(font = r'.\font\arial.ttf',size=np.floor(3e-2 * image.size[1] + 0.5).astype('int32'))
+        #font = ImageFont.load_default()
         thickness = (image.size[0] + image.size[1]) // 300
 
         for i, c in reversed(list(enumerate(out_classes))):

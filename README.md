@@ -31,9 +31,10 @@ cd logohunter/
 
 Simply setup the conda environment with
 ```
+cd src/
 conda config --env --add channels conda-forge
 conda env create -f environment.yml
-source activate logohunter
+source activate logo_detection
 ```
 
 The `environment.yml` file was built on a AWS ubuntu machine: if the commands above don't work (e.g. it failed on my MacBook Air), the environment can be simply built with the folllowing:

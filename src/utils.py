@@ -8,8 +8,8 @@ from matplotlib.colors import rgb_to_hsv, hsv_to_rgb
 from PIL import Image, ImageFont, ImageDraw
 from timeit import default_timer as timer
 
-import readline
-readline.parse_and_bind("tab: complete")
+#import readline
+#readline.parse_and_bind("tab: complete")
 
 min_logo_size = (10,10)
 
@@ -291,7 +291,8 @@ def draw_annotated_box(image, box_list_list, label_list, color_list):
     """
 
     font_path = os.path.join(os.path.dirname(__file__), 'keras_yolo3/font/FiraMono-Medium.otf')
-    font = ImageFont.truetype(font = font_path, size=np.floor(3e-2 * image.size[1] + 0.5).astype('int32'))
+    font = ImageFont.truetype(font = r'.\keras_yolo3\font\arial.ttf',size=np.floor(3e-2 * image.size[1] + 0.5).astype('int32'))
+    #font = ImageFont.load_default()
     thickness = (image.size[0] + image.size[1]) // 300
 
     draw = ImageDraw.Draw(image)

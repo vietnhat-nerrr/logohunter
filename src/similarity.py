@@ -1,11 +1,16 @@
 import cv2
 import numpy as np
+import pathlib
+import os
 from sklearn.metrics.pairwise import cosine_similarity
 
 from utils import bbox_colors, chunks, draw_annotated_box, features_from_image
 from timeit import default_timer as timer
 from PIL import Image
 
+def relative_path(fullpath):
+    start = pathlib.Path().absolute()
+    return os.path.relpath(fullpath, start)
 
 def similarity_cutoff(feat_input, features, threshold=0.95, timing=False):
     """
@@ -61,20 +66,26 @@ def load_brands_compute_cutoffs(input_paths, model_preproc, features, threshold 
 
     start = timer()
     img_input = []
+    #print(f"input paths{input_paths}")
+    #test_img = cv2.imread(input_paths[0])
+    #print(test_img)
     for path in input_paths:
-        img = cv2.imread(path)
+        img = cv2.imread(relative_path(path))
+        #print(img)
         # apppend images in RGB color ordering
         if img is not None:
             img_input.append(img[:,:,::-1])
         else:
-            print(path)
+            print(f"path in else condition {path}")
 
     t_read  = timer()-start
     model, my_preprocess = model_preproc
     img_input = np.array(img_input)
     feat_input = features_from_image(img_input, model, my_preprocess)
     t_feat = timer()-start
-
+    #print(f"img_input{img_input}")
+    print(f"shape feat input{feat_input.shape}")
+    print(f"shape features{features.shape}")
     sim_cutoff, (bins, cdf_list)= similarity_cutoff(feat_input, features, threshold, timing)
     t_sim_cut = timer()-start
 

@@ -113,3 +113,8 @@ dmypy.json
 
 # nohup
 nohup.out
+
+data/LogosInTheWild-v2/
+src/inception_logo_features_200_trunc2.hdf5
+src/keras_yolo3/yolo_weights_logos.h5.1
+src/vgg16_logo_features_128.hdf5
