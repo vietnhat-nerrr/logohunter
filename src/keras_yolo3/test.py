@@ -12,4 +12,6 @@ print(img.shape)
 
 #python logohunter.py  --image --input_brands ..\data\test\test_brands\test_lexus.png --input_images ..\data\test\lexus\ --output ..\data\test\test_lexus --outtxt
 #python logohunter.py  --image --input_brands ..\data\test\Test\Logo --input_images ..\data\test\Test\Image\ --output ..\data\test\Test\Result --outtxt
+#python logohunter.py  --image --input_brands ..\data\test\Testv2\Logo --input_images ..\data\test\Testv2\Image\data.txt --output ..\data\test\Testv2\Result --outtxt
+#python litw_annotation.py   -img_path ..\data\test\Testv2\Image\  -classes_names ..\data\test\Testv2\Image\brand.txt  -out_name datatest -train_test_split 1 -closedset
 
